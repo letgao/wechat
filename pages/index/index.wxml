@@ -1,0 +1,39 @@
+<!--index.wxml-->
+<view class="container">
+    <block wx:for='{{arraylist}}' wx:key='{{index}}'>
+        <view class='{{(index==obj["tip"+index])?"box2":"box"}}'>
+            <text class='{{(index==obj["tip"+index])?"shoWords":"word"}}'>{{item.title}}</text>
+            <text class='show' bindtap='loadmore' data-num='{{index}}' wx:if='{{(index!=obj["tip"+index])}}'>全文</text>
+            <text class='show' bindtap='hide' data-num='{{index}}' wx:else>收起</text>
+        </view>
+    </block>
+</view>
+<view class='box3'>
+    <view class='tab'>
+        <view class='tab-item {{current==0?"active":""}}' data-current='0' bindtap='move'>选项1</view>
+        <view class='tab-item {{current==1?"active":""}}' data-current='1' bindtap='move'>选项2</view>
+        <view class='tab-item {{current==2?"active":""}}' data-current='2' bindtap='move'>选项3</view>
+        <view class='tab-item {{current==3?"active":""}}' data-current='3' bindtap='move'>选项4</view>
+    </view>
+    <view class='mune'>
+        <swiper bindchange='change' duration='100' current='{{current}}' style='height={{winHeight - 31}}px'>
+            <swiper-item>1</swiper-item>
+            <swiper-item>2</swiper-item>
+            <swiper-item>3</swiper-item>
+            <swiper-item>4</swiper-item>
+        </swiper>
+    </view>
+</view>
+<view class='box4' bindtouchstart='moveStart' bindtouchmove='moveTouche' bindtouchend='moveEnd' style='left:{{-txtStyle}}rpx'>
+    <view class='showText'>
+        <view>
+            <image src='http://pic9.nipic.com/20100908/1304280_110546082533_2.jpg' mode='widthFix'></image>
+        </view>
+         <view>
+            <image src='http://pic9.nipic.com/20100908/1304280_110546082533_2.jpg' mode='widthFix'></image>
+        </view>
+    </view>
+    <view class='delete' style='right:-150rpx'>
+        删除
+    </view>
+</view>
